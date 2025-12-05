@@ -56,7 +56,7 @@ const Testimonials = () => {
   return (
     <section className="w-full py-16 bg-white">
       {/* Title */}
-      <h2 className="text-center text-3xl md:text-4xl font-bold mb-12">
+      <h2 className="playfair-display text-[#1E2D40] text-center text-3xl md:text-4xl font-bold mb-12">
         See what our clients say…
       </h2>
 

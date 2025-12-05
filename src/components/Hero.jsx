@@ -10,35 +10,35 @@ const Hero = () => {
       }}
     >
       {/* Dark overlay */}
-      <div className="absolute inset-0 bg-black/60"></div>
+      <div className=" absolute inset-0 bg-black/60"></div>
 
       <div className="relative max-w-7xl mx-auto px-6 lg:px-10 grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
         
         {/* LEFT CONTENT */}
         <div className="text-white space-y-6">
-          <h2 className="text-2xl sm:text-4xl font-bold leading-tight">
+          <h2 className="playfair-display text-2xl sm:text-4xl font-bold leading-tight">
             Speak with Privacon’s Lead Investigator.
           </h2>
 
-          <p className="text-sm  sm:text-lg text-gray-200 leading-relaxed">
+          <p className=" playfair-display text-sm  sm:text-lg text-gray-200 leading-relaxed">
             Privacon Investigations is a full-service private investigation 
             agency based in Western New York. We offer Personal & Family, 
             Corporate, and Legal investigative services.
           </p>
 
-          <p className="text-gray-200 text-sm  sm:text-lg">
+          <p className="playfair-display text-gray-200 text-sm  sm:text-lg">
             We primarily handle cases in Buffalo, Grand Island, Clarence, 
             Hamburg, Niagara Falls, East Aurora, Rochester, Syracuse, and 
             anywhere else in the Erie and Cattaraugus counties.
           </p>
 
-          <p className="text-sm  sm:text-lg font-semibold">
+          <p className=" playfair-display text-sm  sm:text-lg font-semibold">
             Call Us Now: <a href="tel:7165440230" className="text-[#DBB189]">
               (716) 544-0230
             </a>
           </p>
 
-          <p className="text-sm  sm:text-lg font-semibold">
+          <p className=" playfair-display text-sm  sm:text-lg font-semibold">
             Email Us: <a href="mailto:agent@privaconpi.com" className="text-[#DBB189]">
               agent@privaconpi.com
             </a>
@@ -47,7 +47,7 @@ const Hero = () => {
 
         {/* RIGHT FORM */}
         <div className="bg-white/30 p-6 sm:p-8 rounded-xl shadow-xl text-white">
-          <h3 className="text-2xl font-semibold mb-6">Free Consultation</h3>
+          <h3 className="playfair-display text-2xl font-semibold mb-6">Free Consultation</h3>
 
           <form className="space-y-3 sm:space-y-5">
             <div>

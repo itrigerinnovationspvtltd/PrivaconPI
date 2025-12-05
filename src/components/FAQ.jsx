@@ -43,7 +43,7 @@ const FAQ = () => {
     <div id="faq" className="w-full bg-[#F5F2EB] pb-10 pt-20 px-4 md:px-6">
       
       {/* HEADING */}
-      <h1 className="text-4xl md:text-5xl font-bold text-center text-[#1E2D40] mb-12">
+      <h1 className="playfair-display text-4xl md:text-5xl font-bold text-center text-[#1E2D40] mb-12">
         Frequently Asked Questions
       </h1>
 

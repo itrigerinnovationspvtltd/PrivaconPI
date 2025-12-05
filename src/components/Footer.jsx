@@ -7,7 +7,7 @@ const Footer = () => {
 
         {/* WHO WE ARE */}
         <div>
-          <h3 className="text-xl font-semibold mb-4">Who We Are</h3>
+          <h3 className="playfair-display text-xl font-semibold mb-4">Who We Are</h3>
           <p className="text-gray-300 leading-relaxed">
             Privacon Investigations is a full-service Western New York Private
             Investigation agency, based in Cattaraugus and Erie Counties.
@@ -20,7 +20,7 @@ const Footer = () => {
 
         {/* WHAT WE DO */}
         <div>
-          <h3 className="text-xl font-semibold mb-4">What We Do</h3>
+          <h3 className="playfair-display text-xl font-semibold mb-4">What We Do</h3>
           <p className="text-gray-300 leading-relaxed">
             We offer Personal/Family/Domestic, Business and Legal Investigations
             across the state of New York at an affordable cost.
@@ -44,7 +44,7 @@ const Footer = () => {
 
         {/* GET IN TOUCH */}
         <div>
-          <h3 className="text-xl font-semibold mb-4">Get In Touch</h3>
+          <h3 className="playfair-display text-xl font-semibold mb-4">Get In Touch</h3>
 
           <p className="text-gray-300">92 W Main St.<br />Gowanda, NY 14070</p>
 
@@ -83,7 +83,7 @@ const Footer = () => {
 
         {/* LEGAL NOTICE */}
         <div>
-          <h3 className="text-xl font-semibold mb-4">Legal Notice</h3>
+          <h3 className="playfair-display text-xl font-semibold mb-4">Legal Notice</h3>
           <p className="text-gray-300 leading-relaxed">
             The information contained in this website is for general information
             purposes only. We are not attorneys and the information we provide

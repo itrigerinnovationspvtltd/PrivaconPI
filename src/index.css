@@ -21,3 +21,10 @@
   transform: translateY(-6px) scale(1.02);
   box-shadow: 0px 10px 35px rgba(0,0,0,0.18);
 }
+
+.playfair-display {
+  font-family: "Playfair Display", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}

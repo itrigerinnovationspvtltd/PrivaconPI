@@ -9,7 +9,7 @@ const Services = () => {
         style={{ backgroundImage: "url('/bgservices.jpg')" }}
       >
         <div className="absolute inset-0 bg-black/30 flex items-center px-6">
-          <h1 className="text-white text-4xl md:text-5xl font-bold max-w-4xl mx-auto">
+          <h1 className="playfair-display text-white text-4xl md:text-5xl font-bold max-w-4xl mx-auto">
             Investigative Services
           </h1>
         </div>
@@ -56,7 +56,7 @@ const Services = () => {
       </div>
       {/* SECTION TITLE */}
       <div className="max-w-7xl mx-auto px-6 mt-16 mb-8 text-[#1E2D40]">
-        <h2 className="text-3xl md:text-4xl font-bold text-center ">
+        <h2 className="playfair-display text-3xl md:text-4xl font-bold text-center ">
           Personal & Family Investigations
         </h2>
       </div>
@@ -135,7 +135,7 @@ const Services = () => {
 
       {/* SECTION TITLE */}
       <div className="max-w-6xl mx-auto px-6 mt-16 mb-8 text-[#1E2D40]">
-        <h2 className="text-3xl md:text-4xl font-bold text-center">
+        <h2 className=" playfair-display text-3xl md:text-4xl font-bold text-center">
           Corporate & Legal Investigations
         </h2>
       </div>

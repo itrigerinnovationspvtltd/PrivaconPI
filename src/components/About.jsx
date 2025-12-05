@@ -5,7 +5,7 @@ const About = () => {
     <div id="about" className="w-full pt-24 pb-20 px-6 bg-white">
 
       {/* TOP HEADING */}
-      <h1 className="text-4xl font-bold text-center text-[#1E2D40] mb-8 sm:mb-16 
+      <h1 className="playfair-display text-4xl font-bold text-center text-[#1E2D40] mb-8 sm:mb-16 
                      md:text-5xl sm:text-4xl">
         About Us
       </h1>
@@ -23,7 +23,7 @@ const About = () => {
 
         {/* RIGHT CONTENT */}
         <div>
-          <h2 className="text-2xl font-bold text-[#1E2D40] leading-tight 
+          <h2 className="playfair-display text-2xl font-bold text-[#1E2D40] leading-tight 
                          md:text-4xl sm:text-3xl">
             Female-Owned <br /> Private Investigation <br /> Agency
           </h2>
@@ -47,7 +47,7 @@ const About = () => {
 
         {/* TEXT FIRST ON MOBILE */}
         <div>
-          <h3 className="text-2xl font-bold text-[#1E2D40] leading-tight 
+          <h3 className=" playfair-display text-2xl font-bold text-[#1E2D40] leading-tight 
                          md:text-4xl sm:text-3xl">
             Founder Sarah Martinez
           </h3>
