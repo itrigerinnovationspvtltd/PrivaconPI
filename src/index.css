@@ -1,0 +1,23 @@
+@import "tailwindcss";
+
+.animate-card {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease-out;
+}
+
+.show-card {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Premium subtle glass + depth */
+.card-pro {
+  backdrop-filter: blur(6px);
+  transition: all .3s ease;
+}
+
+.card-pro:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0px 10px 35px rgba(0,0,0,0.18);
+}
