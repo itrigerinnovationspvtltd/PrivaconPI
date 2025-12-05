@@ -1,9 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 
 const Hero = () => {
+  const [showPopup, setShowPopup] = useState(false);
+
+  const handlesubmit = (e)=>{
+    e.preventDefault();
+    setShowPopup(true);
+    e.target.reset();
+
+    setTimeout(()=>{
+      setShowPopup(false);
+    },3000);
+  };
+
   return (
     <section id="home"
-      className=" relative bg-cover bg-center bg-no-repeat pt-28  pb-10"
+      className=" relative bg-cover bg-center bg-no-repeat pt-28  pb-16"
       style={{
         backgroundImage:
           "url('/bgimage.jpg')"
@@ -49,11 +61,12 @@ const Hero = () => {
         <div className="bg-white/30 p-6 sm:p-8 rounded-xl shadow-xl text-white">
           <h3 className="playfair-display text-2xl font-semibold mb-6">Free Consultation</h3>
 
-          <form className="space-y-3 sm:space-y-5">
+          <form onSubmit={handlesubmit} className="space-y-3 sm:space-y-5">
             <div>
               <label className="text-sm font-medium">Name</label>
               <input
                 type="text"
+                required
                 className="w-full border-b border-gray-300 focus:border-black bg-transparent py-2 outline-none"
               />
             </div>
@@ -61,7 +74,8 @@ const Hero = () => {
             <div>
               <label className="text-sm font-medium">Phone</label>
               <input
-                type="text"
+               type="tel"
+                required
                 className="w-full border-b border-gray-300 focus:border-black bg-transparent py-2 outline-none"
               />
             </div>
@@ -70,6 +84,7 @@ const Hero = () => {
               <label className="text-sm font-medium">Email</label>
               <input
                 type="email"
+                required
                 className="w-full border-b border-gray-300 focus:border-black bg-transparent py-2 outline-none"
               />
             </div>
@@ -78,6 +93,7 @@ const Hero = () => {
               <label className="text-sm font-medium">Subject</label>
               <input
                 type="text"
+                required
                 className="w-full border-b border-gray-300 focus:border-black bg-transparent py-2 outline-none"
               />
             </div>
@@ -85,7 +101,8 @@ const Hero = () => {
             <div>
               <label className="text-sm font-medium">Message</label>
               <textarea
-                rows="4"
+                rows="2"
+                required
                 className="w-full border-b border-gray-300 focus:border-black bg-transparent py-2 outline-none"
               ></textarea>
             </div>
@@ -97,6 +114,38 @@ const Hero = () => {
           </form>
         </div>
       </div>
+
+      {/* popup thankyou */}
+      {showPopup && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black/60 z-50">
+          <div
+            className="
+              bg-white text-black p-6 rounded-xl shadow-xl w-72 sm:w-96 text-center relative
+              transform transition-all duration-300 ease-out
+              animate-[fadeInScale_0.3s_ease-out]
+            "
+          >
+            <button
+              onClick={() => setShowPopup(false)}
+              className="absolute -top-2 -right-2 bg-black text-white w-7 h-7 rounded-full"
+            >
+              ✕
+            </button>
+
+            <h3 className="text-lg font-semibold mb-2">Thank You! 🎉</h3>
+            <p className="text-sm">Your request has been submitted.</p>
+          </div>
+        </div>
+      )}
+      {/* Animation Keyframes */}
+      <style>
+        {`
+          @keyframes fadeInScale {
+            0% { opacity: 0; transform: scale(0.7); }
+            100% { opacity: 1; transform: scale(1); }
+          }
+        `}
+      </style>
     </section>
   );
 };
