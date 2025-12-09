@@ -27,34 +27,27 @@ const Hero = () => {
       <div className="relative max-w-7xl mx-auto px-6 lg:px-10 grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
         
         {/* LEFT CONTENT */}
-        <div className="text-white space-y-6">
+        <div className="text-white space-y-6 md:space-y-10">
           <h2 className="playfair-display text-2xl sm:text-4xl font-bold leading-tight">
-            Speak with Privacon’s Lead Investigator.
+            Hire a Licensed Private Investigator You Can Trust
           </h2>
 
           <p className=" playfair-display text-sm  sm:text-lg text-gray-200 leading-relaxed">
-            Privacon Investigations is a full-service private investigation 
-            agency based in Western New York. We offer Personal & Family, 
-            Corporate, and Legal investigative services.
+            Discreet. Accurate. Confidential. Whether it’s infidelity, surveillance, cyber investigations, or background checks. We uncover the truth.
+
           </p>
 
-          <p className="playfair-display text-gray-200 text-sm  sm:text-lg">
-            We primarily handle cases in Buffalo, Grand Island, Clarence, 
-            Hamburg, Niagara Falls, East Aurora, Rochester, Syracuse, and 
-            anywhere else in the Erie and Cattaraugus counties.
-          </p>
+          
 
-          <p className=" playfair-display text-sm  sm:text-lg font-semibold">
-            Call Us Now: <a href="tel:7165440230" className="text-[#DBB189]">
-              (716) 544-0230
-            </a>
-          </p>
+          <button className="playfair-display text-base sm:text-lg font-semibold">
+  <a
+    href="tel:7165440230"
+    className="bg-[#c79b74] text-white px-5 py-2 rounded-xl shadow-md hover:bg-[#DBB189] hover:shadow-lg transition-all duration-300 ease-in-out focus:ring-2 focus:ring-[#DBB189] focus:outline-none"
+  >
+    Call Us
+  </a>
+</button>
 
-          <p className=" playfair-display text-sm  sm:text-lg font-semibold">
-            Email Us: <a href="mailto:agent@privaconpi.com" className="text-[#DBB189]">
-              agent@privaconpi.com
-            </a>
-          </p>
         </div>
 
         {/* RIGHT FORM */}

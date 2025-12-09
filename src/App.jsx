@@ -5,6 +5,7 @@ import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import Services from "./components/Services";
 import Testimonials from "./components/Testimonials";
+import WhyChoose from "./components/WhyChoose";
 
 
 
@@ -18,6 +19,7 @@ function App() {
     <Testimonials />
     <About />
     <Services />
+    <WhyChoose />
     <FAQ />
     <Footer />
    </div>
