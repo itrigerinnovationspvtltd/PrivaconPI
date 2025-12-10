@@ -3,14 +3,36 @@ import React, { useState } from "react";
 const Hero = () => {
   const [showPopup, setShowPopup] = useState(false);
 
-  const handlesubmit = (e)=>{
+ const handleSubmit = (e) => {
     e.preventDefault();
-    setShowPopup(true);
-    e.target.reset();
 
-    setTimeout(()=>{
+    const form = e.target;
+
+    const name = form.name.value;
+    const phone = form.phone.value;
+    const email = form.email.value;
+    const subject = form.subject.value;
+    const message = form.message.value;
+ const mailtoLink = `
+      mailto:agent@privaconpi.com
+      ?subject=${encodeURIComponent("New Lead Submission")}
+      &body=${encodeURIComponent(
+        `Name: ${name}
+Phone: ${phone}
+Email: ${email}
+Subject: ${subject}
+Message: ${message}`
+      )}
+    `.replace(/\s+/g, "");
+
+    window.location.href = mailtoLink;
+
+    setShowPopup(true);
+    form.reset();
+
+    setTimeout(() => {
       setShowPopup(false);
-    },3000);
+    }, 5000);
   };
 
   return (
@@ -52,55 +74,61 @@ const Hero = () => {
 
         {/* RIGHT FORM */}
         <div className="bg-white/30 p-6 sm:p-8 rounded-xl shadow-xl text-white">
-          <h3 className="playfair-display text-2xl font-semibold mb-6">Free Consultation</h3>
+          <h3 className="playfair-display text-2xl font-semibold mb-6">
+            Free Consultation
+          </h3>
 
-          <form onSubmit={handlesubmit} className="space-y-3 sm:space-y-5">
+          <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-5">
             <div>
               <label className="text-sm font-medium">Name</label>
               <input
+                name="name"
                 type="text"
                 required
-                className="w-full border-b border-gray-300 focus:border-black bg-transparent py-2 outline-none"
+                className="w-full border-b border-gray-300 bg-transparent py-2 outline-none"
               />
             </div>
 
             <div>
               <label className="text-sm font-medium">Phone</label>
               <input
-               type="tel"
+                name="phone"
+                type="tel"
                 required
-                className="w-full border-b border-gray-300 focus:border-black bg-transparent py-2 outline-none"
+                className="w-full border-b border-gray-300 bg-transparent py-2 outline-none"
               />
             </div>
 
             <div>
               <label className="text-sm font-medium">Email</label>
               <input
+                name="email"
                 type="email"
                 required
-                className="w-full border-b border-gray-300 focus:border-black bg-transparent py-2 outline-none"
+                className="w-full border-b border-gray-300 bg-transparent py-2 outline-none"
               />
             </div>
 
             <div>
               <label className="text-sm font-medium">Subject</label>
               <input
+                name="subject"
                 type="text"
                 required
-                className="w-full border-b border-gray-300 focus:border-black bg-transparent py-2 outline-none"
+                className="w-full border-b border-gray-300 bg-transparent py-2 outline-none"
               />
             </div>
 
             <div>
               <label className="text-sm font-medium">Message</label>
               <textarea
+                name="message"
                 rows="2"
                 required
-                className="w-full border-b border-gray-300 focus:border-black bg-transparent py-2 outline-none"
+                className="w-full border-b border-gray-300 bg-transparent py-2 outline-none"
               ></textarea>
             </div>
 
-            {/* Button */}
             <button className="w-full bg-[#DBB189] text-white py-3 rounded-md font-semibold hover:bg-[#8e7054] transition">
               Submit
             </button>

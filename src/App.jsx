@@ -6,6 +6,7 @@ import Navbar from "./components/Navbar";
 import Services from "./components/Services";
 import Testimonials from "./components/Testimonials";
 import WhyChoose from "./components/WhyChoose";
+import LeadFormPopup from "./components/LeadFormPopup";
 
 
 
@@ -16,6 +17,7 @@ function App() {
    <div>
     <Navbar />
     <Hero />
+    <LeadFormPopup />
     <Testimonials />
     <About />
     <Services />
