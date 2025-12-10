@@ -51,7 +51,7 @@ const Services = () => {
       {/* HERO SECTION */}
       <div
         className="relative w-full h-64 md:h-96 bg-cover bg-center"
-        style={{ backgroundImage: "url('/bgservices.jpg')" }}
+        style={{ backgroundImage: "url('/bgservices.webp')" }}
       >
         <div className="absolute inset-0 bg-black/30 flex items-center px-6">
           <h1 className="playfair-display text-white text-4xl md:text-5xl font-bold max-w-4xl mx-auto">

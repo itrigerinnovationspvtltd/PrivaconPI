@@ -15,7 +15,7 @@ const About = () => {
         {/* LEFT IMAGE */}
         <div>
           <img
-            src="/about1.jpg"
+            src="/about1.webp"
             alt="Private Investigation"
             className="rounded-2xl shadow-xl w-full sm:w-[70%]"
           />
@@ -77,7 +77,7 @@ const About = () => {
         {/* IMAGE */}
         <div>
           <img
-            src="/about2.jpg"
+            src="/about2.webp"
             alt="Investigation Work"
             className="rounded-2xl md:ml-10 shadow-xl w-full sm:w-[70%]"
           />

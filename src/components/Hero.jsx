@@ -40,7 +40,7 @@ Message: ${message}`
       className=" relative bg-cover bg-center bg-no-repeat pt-28  pb-16"
       style={{
         backgroundImage:
-          "url('/bgimage.jpg')"
+          "url('/bgimage.webp')"
       }}
     >
       {/* Dark overlay */}

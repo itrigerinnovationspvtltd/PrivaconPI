@@ -146,7 +146,7 @@ const Testimonials = () => {
                         {t.name}
                       </h4>
                       <img
-                        src="/checkmark.jpg"
+                        src="/checkmark.webp"
                         alt="verified"
                         className="w-5 mt-1"
                       />
