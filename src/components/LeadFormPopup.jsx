@@ -1,11 +1,17 @@
 import React, { useEffect, useState } from "react";
+import { API_ENDPOINTS } from "../config/api";
+import { useNavigate } from "react-router-dom";
 
 const LeadFormPopup = () => {
-  const [open, setOpen] = useState(false);           // Lead form popup
-  const [hasOpened, setHasOpened] = useState(false); // Prevent opening multiple times
-  const [showPopup, setShowPopup] = useState(false); // Thank-you popup
+  const [open, setOpen] = useState(false);
+  const [hasOpened, setHasOpened] = useState(false);
+  // const [showPopup, setShowPopup] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
 
-  //  OPEN POPUP ON 20% PAGE SCROLL (ONLY ONCE)
+  const navigate = useNavigate();
+
+  // OPEN POPUP ON 20% SCROLL
   useEffect(() => {
     const handleScroll = () => {
       if (hasOpened) return;
@@ -24,42 +30,45 @@ const LeadFormPopup = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [hasOpened]);
 
-  // FORM SUBMIT → OPEN EMAIL CLIENT + SHOW THANK-YOU POPUP
-  const handleSubmit = (e) => {
+  // SUBMIT FORM → send-email.php
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
+    setError(null);
 
     const form = e.target;
 
-    const name = form.name.value;
-    const phone = form.phone.value;
-    const email = form.email.value;
-    const message = form.message.value;
+    const formData = {
+      Name: form.name.value,
+      Phone: form.phone.value,
+      Email: form.email.value,
+      Subject: form.subject.value,
+      Message: form.message.value,
+    };
 
-    const mailtoLink = `
-      mailto:agent@privaconpi.com
-      ?subject=${encodeURIComponent("Lead Form Submission")}
-      &body=${encodeURIComponent(
-        `Name: ${name}
-Phone: ${phone}
-Email: ${email}
-Message: ${message}`
-      )}
-    `.replace(/\s+/g, "");
+    try {
+      const response = await fetch(API_ENDPOINTS.SEND_EMAIL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
 
-    window.location.href = mailtoLink;
+      const data = await response.json();
 
-    // Close form & show thank-you popup
-    setOpen(false);            //  Form closes
-    setShowPopup(true);        //  Thank-you popup opens
+      if (data.success) {
+        form.reset();
+        setOpen(false);
+        navigate("/thank-you");
+      } else {
+        setError(data.message || "Error sending message.");
+      }
+    } catch (err) {
+      setError("Network error. Try again.");
+    }
 
-    form.reset();
-
-    setTimeout(() => {
-      setShowPopup(false);
-    }, 5000);
+    setIsLoading(false);
   };
 
-  // Close when clicked outside popup
   const handleOutsideClick = (e) => {
     if (e.target.id === "popupOverlay") {
       setOpen(false);
@@ -68,7 +77,6 @@ Message: ${message}`
 
   return (
     <div className="fixed inset-0 z-50 pointer-events-none">
-      
       {/* LEAD FORM POPUP */}
       {open && (
         <div
@@ -127,6 +135,15 @@ Message: ${message}`
                   className="w-full border-b border-gray-300 bg-transparent py-2 outline-none"
                 />
               </div>
+              <div>
+                <label className="text-sm font-medium">Subject</label>
+                <input
+                  name="subject"
+                  type="text"
+                  required
+                  className="w-full border-b border-gray-300 bg-transparent py-2 outline-none"
+                />
+              </div>
 
               <div>
                 <label className="text-sm font-medium">Message</label>
@@ -138,36 +155,24 @@ Message: ${message}`
                 ></textarea>
               </div>
 
-              <button className="w-full bg-[#DBB189] text-white py-3 rounded-md font-semibold hover:bg-[#8e7054] transition">
-                Submit
+              {error && (
+                <p className="text-red-300 text-sm bg-red-900/30 p-2 rounded-md">
+                  {error}
+                </p>
+              )}
+
+              <button
+                className="w-full bg-[#DBB189] text-white py-3 rounded-md font-semibold hover:bg-[#8e7054] transition disabled:opacity-60"
+                disabled={isLoading}
+              >
+                {isLoading ? "Sending..." : "Submit"}
               </button>
             </form>
           </div>
         </div>
       )}
 
-      {/*  THANK YOU POPUP */}
-      {showPopup && (
-        <div className="pointer-events-auto fixed inset-0 flex items-center justify-center bg-black/60 z-50">
-          <div
-            className="
-              bg-white text-black p-6 rounded-xl shadow-xl w-72 sm:w-96 text-center relative
-              transform transition-all duration-300 ease-out
-              animate-[fadeInScale_0.3s_ease-out]
-            "
-          >
-            <button
-              onClick={() => setShowPopup(false)}
-              className="absolute -top-2 -right-2 bg-black text-white w-7 h-7 rounded-full"
-            >
-              ✕
-            </button>
-
-            <h3 className="text-lg font-semibold mb-2">Thank You! 🎉</h3>
-            <p className="text-sm">Your request has been submitted.</p>
-          </div>
-        </div>
-      )}
+      
     </div>
   );
 };
