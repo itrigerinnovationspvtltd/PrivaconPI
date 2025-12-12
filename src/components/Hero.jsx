@@ -1,38 +1,49 @@
 import React, { useState } from "react";
+import { API_ENDPOINTS } from "../config/api"; 
+import { useNavigate } from "react-router-dom";
 
 const Hero = () => {
-  const [showPopup, setShowPopup] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
 
- const handleSubmit = (e) => {
+  const navigate = useNavigate();
+
+ const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
+    setError(null);
 
     const form = e.target;
 
-    const name = form.name.value;
-    const phone = form.phone.value;
-    const email = form.email.value;
-    const subject = form.subject.value;
-    const message = form.message.value;
- const mailtoLink = `
-      mailto:agent@privaconpi.com
-      ?subject=${encodeURIComponent("New Lead Submission")}
-      &body=${encodeURIComponent(
-        `Name: ${name}
-Phone: ${phone}
-Email: ${email}
-Subject: ${subject}
-Message: ${message}`
-      )}
-    `.replace(/\s+/g, "");
+    const formData = {
+      Name: form.name.value,
+      Phone: form.phone.value,
+      Email: form.email.value,
+      Subject: form.subject.value,
+      Message: form.message.value,
+    };
 
-    window.location.href = mailtoLink;
+    try {
+      //  SAME FETCH LOGIC AS LEADFORMPOPUP
+      const response = await fetch(API_ENDPOINTS.SEND_EMAIL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
 
-    setShowPopup(true);
-    form.reset();
+      const data = await response.json();
 
-    setTimeout(() => {
-      setShowPopup(false);
-    }, 5000);
+      if (data.success) {
+        form.reset();
+        navigate("/thank-you"); //  SAME AS POPUP
+      } else {
+        setError(data.message || "Failed to send email. Please try again.");
+      }
+    } catch (err) {
+      setError("Network error. Please check your connection and try again.");
+    }
+
+    setIsLoading(false);
   };
 
   return (
@@ -128,45 +139,23 @@ Message: ${message}`
                 className="w-full border-b border-gray-300 bg-transparent py-2 outline-none"
               ></textarea>
             </div>
+{/* ADDED ERROR MESSAGE */}
+            {error && (
+              <p className="text-red-300 text-sm bg-red-900/50 p-2 rounded-md">
+                {error}
+              </p>
+            )}
 
-            <button className="w-full bg-[#DBB189] text-white py-3 rounded-md font-semibold hover:bg-[#8e7054] transition">
-              Submit
+            {/* UPDATED BUTTON with loading */}
+            <button
+              className="w-full bg-[#DBB189] text-white py-3 rounded-md font-semibold hover:bg-[#8e7054] transition disabled:opacity-60"
+              disabled={isLoading}
+            >
+              {isLoading ? "Sending..." : "Submit"}
             </button>
           </form>
         </div>
       </div>
-
-      {/* popup thankyou */}
-      {showPopup && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black/60 z-50">
-          <div
-            className="
-              bg-white text-black p-6 rounded-xl shadow-xl w-72 sm:w-96 text-center relative
-              transform transition-all duration-300 ease-out
-              animate-[fadeInScale_0.3s_ease-out]
-            "
-          >
-            <button
-              onClick={() => setShowPopup(false)}
-              className="absolute -top-2 -right-2 bg-black text-white w-7 h-7 rounded-full"
-            >
-              ✕
-            </button>
-
-            <h3 className="text-lg font-semibold mb-2">Thank You! 🎉</h3>
-            <p className="text-sm">Your request has been submitted.</p>
-          </div>
-        </div>
-      )}
-      {/* Animation Keyframes */}
-      <style>
-        {`
-          @keyframes fadeInScale {
-            0% { opacity: 0; transform: scale(0.7); }
-            100% { opacity: 1; transform: scale(1); }
-          }
-        `}
-      </style>
     </section>
   );
 };

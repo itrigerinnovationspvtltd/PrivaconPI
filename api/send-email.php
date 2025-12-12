@@ -39,7 +39,7 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 }
 
 // Email configuration
-$to = "amit.k001122@gmail.com"; // Recipient email address
+$to = "itrigerinnovations@gmail.com"; // Recipient email address
 $subject = "New Lead Form Submission - Privacon Investigations";
 
 // Email body

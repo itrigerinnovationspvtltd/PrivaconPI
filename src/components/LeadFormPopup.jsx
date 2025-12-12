@@ -60,10 +60,10 @@ const LeadFormPopup = () => {
         setOpen(false);
         navigate("/thank-you");
       } else {
-        setError(data.message || "Error sending message.");
+        setError(data.message || "Failed to send email. Please try again.");
       }
     } catch (err) {
-      setError("Network error. Try again.");
+      setError("Network error. Please check your connection and try again.");
     }
 
     setIsLoading(false);
