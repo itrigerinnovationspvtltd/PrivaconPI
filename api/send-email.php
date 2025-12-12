@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 $input = json_decode(file_get_contents('php://input'), true);
 
 // Validate required fields
-$requiredFields = ['name', 'phone', 'email', 'message'];
+$requiredFields = ['name', 'phone', 'email', 'subject', 'message'];
 foreach ($requiredFields as $field) {
     if (empty($input[$field])) {
         http_response_code(400);
@@ -52,8 +52,8 @@ $emailBody = "
     .header { background: #DBB189; color: white; padding: 20px; text-align: center; }
     .content { background: #f7f7f7; padding: 20px; }
     .field { margin-bottom: 15px; }
-    .label { font-weight: bold; color: #DBB189; }
-    .value { margin-top: 5px; padding: 10px; background: white; border-left: 3px solid #DBB189; }
+    .label { font-weight: bold; color: #8e7054; }
+    .value { margin-top: 5px; padding: 10px; background: white; border-left: 3px solid #8e7054; }
   </style>
 </head>
 <body>
