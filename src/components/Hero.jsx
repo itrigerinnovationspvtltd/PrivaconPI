@@ -16,11 +16,11 @@ const Hero = () => {
     const form = e.target;
 
     const formData = {
-      Name: form.name.value,
-      Phone: form.phone.value,
-      Email: form.email.value,
-      Subject: form.subject.value,
-      Message: form.message.value,
+      name: form.name.value,
+      phone: form.phone.value,
+      email: form.email.value,
+      subject: form.subject.value,
+      message: form.message.value,
     };
 
     try {
